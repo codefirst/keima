@@ -1,9 +1,20 @@
-INSTALL LIBRARY
+REQUIRE
+------------------------------
+
+ * node.js
+ * npm
+
+INSTALL DEPENDENCIES LIBRARYRUN
 ------------------------------
 
    $ npm install -g
 
-DEVELOPMENT
+RUN
 ------------------------------
 
+   $ node server.js
+
+Or, you need auto-reload:
+
    $ npm install supervisor -g
+   $ supervisor -p server.js
