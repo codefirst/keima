@@ -18,6 +18,19 @@ form(method="post", action="/app/#{app.id}")
 
 h2 Demo
 
-  p: input#input
+  form#publish
+   input.channel(value="demo")
+   input.name(value="event")
+   input.data(value="data")
+   input(type="submit", value="publish")
+
+  form#subscribe
+   input.channel(value="demo")
+   input(type="submit", value="subscribe")
+
+  form#observe
+   input.name(value="event")
+   input(type="submit", value="observe")
+
   p: textarea#console(cols=80,rows=15)
 

@@ -7,8 +7,7 @@ const express = require('express');
 const Resource = require('express-resource');
 const app = module.exports = express.createServer();
 
-
-app.configure(function(){
+app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.use(express.bodyParser());
@@ -27,9 +26,7 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', function(req, res){
-    res.render('index', {
-        title: 'Keima'
-    });
+    res.redirect('/app');
 });
 
 app.resource('app', require('./app'));
@@ -39,7 +36,7 @@ app.listen(app.settings.env == 'development' ? 3000 : 80);
 // socket.io
 const io = require('socket.io').listen(app);
 const connection = require('./connection');
-connection.run(io);
+connection.run(app, io);
 
 console.log("Express server listening on port %d in %s mode",
             app.address().port,
