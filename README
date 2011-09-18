@@ -1,0 +1,9 @@
+INSTALL LIBRARY
+------------------------------
+
+   $ npm install -g
+
+DEVELOPMENT
+------------------------------
+
+   $ npm install supervisor -g
