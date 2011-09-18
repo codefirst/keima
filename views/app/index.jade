@@ -1,0 +1,13 @@
+h1 App
+
+table
+  tr
+    th app
+    th date
+  tbody
+  - for(var key in apps)
+    tr
+      td(class="app"): a(href='/app/#{apps[key].id}') #{apps[key].title}
+      td(class="date")= apps[key].date
+
+p: a(href="/app/new") new app

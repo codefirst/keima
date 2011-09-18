@@ -31,6 +31,8 @@ app.get('/', function(req, res){
     });
 });
 
+app.resource('app', require('./app'));
+
 app.listen(app.settings.env == 'development' ? 3000 : 80);
 console.log("Express server listening on port %d in %s mode",
             app.address().port,
