@@ -1,0 +1,11 @@
+h1 Application: #{app.title}
+
+ul
+  li Title: #{app.title}
+  li Date:  #{app.date}
+
+p: a(href="/app/#{app.id}/edit") edit this
+
+form(method="post", action="/app/#{app.id}")
+  input(type="submit", value="delete this")
+  input(type="hidden", name="_method", value="delete")

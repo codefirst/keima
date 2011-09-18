@@ -20,8 +20,11 @@ function neq(x, k) {
     }
 }
 
-function snd(k) {
-    return function(_, x) { return k(x); }
+function success(k) {
+    return function(error, x) {
+        if(!error){ return k(x); }
+        else      { throw error; }
+    }
 }
 
 const App = mongoose.model('App');
@@ -41,6 +44,16 @@ exports.App = {
                      }));
     },
     all : function(k) {
-        App.find({}).asc('title').exec(snd(k));
+        App.find({}).asc('title').exec(success(k));
+    },
+    get : function(id, k) {
+        App.findById(id, success(k));
+    },
+    update : function(id, obj, k) {
+        obj.date = new Date();
+        App.update({ _id : id }, obj, success(k));
+    },
+    remove : function(id, k) {
+        App.remove({ _id : id }, success(k));
     }
 }

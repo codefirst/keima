@@ -4,6 +4,7 @@
  */
 
 const express = require('express');
+const Resource = require('express-resource');
 const app = module.exports = express.createServer();
 
 

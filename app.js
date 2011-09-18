@@ -13,7 +13,7 @@ exports.new = function(req, res){
 };
 
 exports.create = function(req, res){
-    model.App.create(req.body.name,
+    model.App.create(req.body.title,
                      function(error){
                          if(error){
                              res.send('app create error:' + error);
@@ -24,17 +24,35 @@ exports.create = function(req, res){
 };
 
 exports.show = function(req, res){
-    res.send('show app ' + req.params.app);
+    model.App.get(req.params.app,
+                  function(app) {
+                      res.render("app/show",
+                                 { title : 'show',
+                                   app   : app })
+                  });
 };
 
+
 exports.edit = function(req, res){
-    res.send('edit app ' + req.params.app);
+    model.App.get(req.params.app,
+                  function(app) {
+                      res.render("app/edit",
+                                 { title : 'edit',
+                                   app   : app })
+                  });
 };
 
 exports.update = function(req, res){
-    res.send('update app ' + req.params.app);
+    model.App.update(req.params.app,
+                     { title : req.body.title },
+                     function(){
+                         res.redirect("/app/" + req.params.app)
+                     });
 };
 
 exports.destroy = function(req, res){
-    res.send('destroy app ' + req.params.app);
+    model.App.remove(req.params.app,
+                     function() {
+                         res.redirect("/app/")
+                     });
 };
