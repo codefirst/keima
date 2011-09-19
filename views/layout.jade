@@ -1,8 +1,23 @@
 !!! 5
 html
   head
-    title= title
+    meta(content='text/thml; charset=utf-8', http-equiv='content')
+
+    title #{title} - Keima
+    link(href="/favicon.ico", rel="shortcut icon", type="image/vnd.microsoft.icon")
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="/javascripts/jquery.min.js")
     script(src="/socket.io/socket.io.js")
-  body!= body
+  body
+    .site
+      .title
+        a(href="/"): img(src="/images/logo.png")
+    .page
+      h1=title
+      !=body
+    .info
+      p.credits
+        | Copyright (C) 2011
+        a(href="http://codefirst.org/") codefirst.org
+        | . All rights reserved.
+

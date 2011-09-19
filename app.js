@@ -3,13 +3,13 @@ const model = require('./model');
 exports.index = function(req, res){
     model.App.all(function(xs){
         res.render('app/index',
-                   { title : 'app list',
+                   { title : 'Dashboard',
                      apps  : xs });
     });
 };
 
 exports.new = function(req, res){
-    res.render('app/new',{title: 'new app'});
+    res.render('app/new',{title: 'Create new application'});
 };
 
 exports.create = function(req, res){
@@ -27,7 +27,7 @@ exports.show = function(req, res){
     model.App.get(req.params.app,
                   function(app) {
                       res.render("app/show",
-                                 { title : 'show',
+                                 { title : app.title,
                                    app   : app })
                   });
 };
@@ -37,7 +37,7 @@ exports.edit = function(req, res){
     model.App.get(req.params.app,
                   function(app) {
                       res.render("app/edit",
-                                 { title : 'edit',
+                                 { title : 'Edit: ' + app.title,
                                    app   : app })
                   });
 };

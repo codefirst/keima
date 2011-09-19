@@ -1,36 +1,16 @@
-script(type="text/javascript")
-    var app = {
-      id : '#{app.id}'
-    }
-script(src="/demo.js")
+table
+  tr
+    th ID
+    td= app.id
+  tr
+    th Title
+    td=app.title
+  tr
+    th Updated date
+    td= app.date
 
-h1 Application: #{app.title}
-
-ul
-  li Title: #{app.title}
-  li Date:  #{app.date}
-
-p: a(href="/app/#{app.id}/edit") edit this
-
-form(method="post", action="/app/#{app.id}")
-  input(type="submit", value="delete this")
+div
+ a.button(href="/app/#{app.id}/edit") edit
+ form.delete-button(method="post", action="/app/#{app.id}")
+  input.button(type="submit", value="delete")
   input(type="hidden", name="_method", value="delete")
-
-h2 Demo
-
-  form#publish
-   input.channel(value="demo")
-   input.name(value="event")
-   input.data(value="data")
-   input(type="submit", value="publish")
-
-  form#subscribe
-   input.channel(value="demo")
-   input(type="submit", value="subscribe")
-
-  form#observe
-   input.name(value="event")
-   input(type="submit", value="observe")
-
-  p: textarea#console(cols=80,rows=15)
-

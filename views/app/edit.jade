@@ -1,12 +1,14 @@
-h1 Application: #{app.title}
-
-form(method="POST", action="/app/#{app.id}")
-  ul
-    li Title:
-      input(name="title", value="#{app.title}")
-    li Date: #{app.date}
-  p
-    input(type="submit", value="Save")
-    input(type="hidden", name="_method", value="put")
-
+table
+  tr
+    th ID
+    td: input(name="id", value="#{app.id}")
+  tr
+    th Title
+    td: input(name="title", value="#{app.title}")
+  tr
+    th Updated date
+    td= app.date
+  tr
+    th
+    td: input.button(type="submit", value="save")
 

@@ -1,13 +1,13 @@
-h1 App
-
-table
-  tr
-    th app
-    th date
-  tbody
+ul.apps
   - for(var key in apps)
-    tr
-      td(class="app"): a(href='/app/#{apps[key].id}') #{apps[key].title}
-      td(class="date")= apps[key].date
+    .app
+      .info
+        span.title= apps[key].title
+        span.date=  apps[key].date
+      p: a(href="/app/#{apps[key].id}") detail
+      p: a(href="/app/#{apps[key].id}/demo") demo
 
-p: a(href="/app/new") new app
+ p:  a.button(href="/app/new") new app
+
+
+

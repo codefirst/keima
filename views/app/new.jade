@@ -1,5 +1,8 @@
-h1 New App
-
 form(action="/app/", method="POST")
-  input(name="title")
-  input(type="submit")
+  table
+    tr
+      th Title
+      td.value: input(name="title", placeholder="application title")
+    tr
+      th
+      td.value: input.button(type="submit", value="Create")
