@@ -6,7 +6,7 @@ $(function(){
     }
     log('start');
 
-    var socket = io.connect('http://localhost/?app=' + app.id);
+    var socket = io.connect('/?app=' + app.id);
 
     function subscribe(channel){
         log("subscribe:" + channel);
