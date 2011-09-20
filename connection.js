@@ -12,7 +12,7 @@ exports.run = function(app, io) {
         model.App.get(req.params.app,
                   function(app) {
                       res.render("demo",
-                                 { title : "Demo: " + app.title,
+                                 { title : "Getting start",
                                    app   : app })
                   });
     });
