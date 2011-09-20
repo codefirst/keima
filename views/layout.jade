@@ -9,15 +9,18 @@ html
     script(src="/javascripts/jquery.min.js")
     script(src="/socket.io/socket.io.js")
   body
-    .site
-      .title
-        a(href="/"): img(src="/images/logo.png")
-    .page
-      h1=title
-      !=body
+    .main
+      .site
+        .title
+          a(href="/"): img(src="/images/logo.png")
+        .navigate
+          a.button Login
+      .page
+        h1=title
+        !=body
     .info
       p.credits
         | Copyright (C) 2011
-        a(href="http://codefirst.org/") codefirst.org
+        a(href="http://codefirst.github.com/") codefirst.org
         | . All rights reserved.
 

@@ -1,0 +1,148 @@
+gradient(x, y)
+  background y
+  background -webkit-gradient(linear, left top, left bottom, from(x), to(y))
+  background -moz-linear-gradient(top, x, y)
+  background -o-linear-gradient(top, x,y)
+
+radius(n)
+  -moz-border-radius n
+  -webkit-border-radius n
+  border-radius n
+
+shadow(n)
+  -moz-box-shadow: 0 n n #ccc;
+  -webkit-box-shadow: 0 n n #ccc;
+
+html,body,div,ul,li,p,form, h1, h2, pre
+  border  0
+  padding 0
+  margin  0
+
+html
+  height 100%
+
+body
+  height 100%
+  color #333
+  font 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  position relative
+
+.main
+  min-height 100%
+
+a
+  color rgb(109,59,28)
+
+.site
+  gradient(rgb(192,99,52), rgb(234,121, 54))
+  padding 20px 50px 10px 50px
+  border-bottom 1px solid rgb(109,59,28)
+  .navigate
+    position absolute
+    top 20px
+    right 0
+    width 200px
+
+.page
+  margin 20px 50px 0px 50px
+  height 90%
+  over-flow auto
+  padding-bottom 100px
+
+  h1
+    margin-bottom 20px
+
+  .app
+    border 1px solid #EEE
+    radius 10px
+    text-align left
+    padding 5px 10px
+    width 100%
+    margin-bottom 5px
+    gradient(#FCFCFC, #EFEFEF)
+    shadow(1px)
+    font-size 90%
+    min-height 50px
+
+    .title
+      font-weight bold
+
+    .date
+      float right
+      top 5px
+      right 5px
+      color #999
+
+  table
+    width 700px
+    th
+      width       150px
+      text-align  right
+      padding-right 10px
+
+  form.delete-button
+    margin-left 10px
+    display inline
+
+  .demo
+    *
+      vertical-align: top;
+    form
+      display inline-block
+      width 100px
+    pre
+      display inline-block
+      width 350px
+      height 100px
+      border 1px solid black
+      padding 5px
+
+body > .info
+  position relative
+  margin-top -100px
+  height 100px
+  clear both
+  shadow(1px)
+  padding-top 10px
+  text-align center
+  color      white
+  border-top 1px solid rgb(109,59,28)
+  gradient(rgb(192,99,52), rgb(234,121, 54))
+  font-size  90%
+
+  a
+    color white
+
+/* button */
+.button
+  border-bottom 1px solid #A19B91 !important
+  text-decoration none !important
+  font 12px/100% 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif
+  padding .55em 1em .6em 1em
+  radius(.5em)
+  color #29231A;
+  border solid 1px #A19B91;
+  gradient(#C3BDB4, #BCB5AB)
+  display: inline-block;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: nonew;
+  text-transform: uppercase;
+  shadow(2px)
+
+.button:hover
+  background #dc4809
+  gradient(#c3bdb4,  #ada79d)
+
+.button:active
+  color #29231a
+  gradient(#c3bdb4,  #9a948a)
+
+input.text
+  radius(3px)
+  width 200px
+  background none repeat scroll 0 0 #E9E9E9
+  color #4A3F2D
+  font-size 13px
+  border medium none
+  padding 6px
