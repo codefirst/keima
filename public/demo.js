@@ -6,19 +6,21 @@ $(function(){
     }
     log('start');
 
-    var socket = io.connect('/?app=' + app.id);
+    var keima = new Keima(app.id);
 
-    function subscribe(channel){
+    function subscribe(channel) {
         log("subscribe:" + channel);
-        socket.emit("subscribe", channel);
+        return keima.subscribe(channel);
     }
-    function observe(name){
-        log("observe:" + name);
-        socket.on(name, function(channel, data){
+
+    function observe(channel, name) {
+        log("observe:" + name + " at " + channel);
+        keima.channels[channel].bind(name, function(data){
             log("receive name: name=" + name + ", channel=" + channel + ", data=" + data);
         });
     }
-    function publish(channel, name, data){
+
+    function publish(channel, name, data) {
         log("publish: channel=" + channel + ", name=" + name + ", data=" + data);
         jQuery.post('/app/' + app.id + "/publish",
                     {
@@ -29,7 +31,7 @@ $(function(){
     }
 
     subscribe('demo');
-    observe('event');
+    observe('demo', 'event');
 
     $('#subscribe').bind('submit', function(e){
         subscribe( $('.channel' ,e.target).val() );
