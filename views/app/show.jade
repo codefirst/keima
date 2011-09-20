@@ -8,9 +8,10 @@ table
   tr
     th Updated date
     td= app.date
-
-div
- a.button(href="/app/#{app.id}/edit") edit
- form.delete-button(method="post", action="/app/#{app.id}")
-  input.button(type="submit", value="delete")
-  input(type="hidden", name="_method", value="delete")
+  tr
+    th
+    td
+     a.button(href="/app/#{app.id}/edit") edit
+     form.delete-button(method="post", action="/app/#{app.id}")
+      input.button(type="submit", value="delete")
+      input(type="hidden", name="_method", value="delete")

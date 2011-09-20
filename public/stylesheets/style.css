@@ -90,6 +90,7 @@ body > .info {
 table th{
     width: 150px;
     text-align: right;
+    padding-right: 10px;
 }
 
 form table{
