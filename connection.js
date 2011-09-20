@@ -1,6 +1,7 @@
+const config     = require('./config');
 const redis      = require('redis');
-const subscriber = redis.createClient(6379, 'localhost');
-const publisher  = redis.createClient(6379, 'localhost');
+const subscriber = redis.createClient(config.redis.port, config.redis.host);
+const publisher  = redis.createClient(config.redis.port, config.redis.host);
 const model = require('./model');
 
 function channel(app, name) {
