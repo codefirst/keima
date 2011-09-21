@@ -40,7 +40,7 @@ resource(app, 'app', require('./app'));
 
 
 
-app.listen(app.settings.env == 'development' ? 3000 : 80);
+app.listen(app.settings.env == 'development' ? 3001 : 80);
 
 // socket.io
 const io = require('socket.io').listen(app);
