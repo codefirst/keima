@@ -9,7 +9,7 @@ function channel(app, name) {
 }
 
 exports.run = function(app, io) {
-    app.post('/app/:app/publish', function(req, res){
+    app.post('/publish/:app', function(req, res){
         console.log(req.body);
         console.log("publish to : " + channel(req.params.app, req.body.channel));
         publisher.publish(channel(req.params.app, req.body.channel),

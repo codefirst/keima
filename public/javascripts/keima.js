@@ -46,7 +46,7 @@ function Keima(app) {
     }
 
     klass.prototype.publish = function(channel, name, data) {
-        post('/app/' + this.app + "/publish", {
+        post('/publish/' + this.app , {
             channel : channel,
             name    : name,
             data    : data
