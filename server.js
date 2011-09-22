@@ -44,9 +44,7 @@ app.get('/help', function(req, res) {
 
 function resource(server, name, actions) {
     server.resource(name, actions);
-    for(key in actions.extras){
-        server.get('/' + name + '/:app/' + key, actions.extras[key]);
-    }
+    actions.extras(server, name);
 }
 resource(app, 'app', require('./app'));
 

@@ -57,12 +57,15 @@ exports.destroy = function(req, res){
                      });
 };
 
-exports.extras = {
-    getting_start : function(req, res) {
+exports.extras = function(server,name) {
+    server.get('/' + name + '/:app/getting_start',function(req, res) {
+        const address = server.address();
+        console.log(address);
         model.App.get(req.params.app, function(app) {
             res.render("app/getting_start",
                        { title : "Getting start",
+                         address  : address.address + ":" + address.port,
                          app   : app })
         });
-    }
+    })
 }

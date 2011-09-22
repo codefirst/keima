@@ -5,12 +5,16 @@ script(type="text/javascript")
 script(src="/javascripts/keima.js")
 script(src="/demo.js")
 
+h2 Prepare
+pre
+  code.javascript
+    &lt;script src="http://#{address}/socket.io/socket.io.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="http://#{address}/javascripts/keima.js" type="text/javascript"&gt;&lt;/script&gt;
 h2 Connection
-.demo
-  pre
-    code.javascript
-      var appkey = "#{app.id}";
-      var keima = new Keima(appkey);
+pre
+  code.javascript
+    var appkey = "#{app.id}";
+    var keima = new Keima(appkey);
 h2 Subscribe channel
 .demo
   pre
