@@ -22,12 +22,7 @@ $(function(){
 
     function publish(channel, name, data) {
         log("publish: channel=" + channel + ", name=" + name + ", data=" + data);
-        jQuery.post('/app/' + app.id + "/publish",
-                    {
-                        channel : channel,
-                        name    : name,
-                        data    : data
-                    },function(){});
+        keima.publish(channel, name, data);
     }
 
     subscribe('demo');
