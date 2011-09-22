@@ -30,6 +30,18 @@ app.get('/', function(req, res){
     res.redirect('/app');
 });
 
+app.get('/about', function(req, res) {
+    res.render('about', {
+        title : 'About'
+    });
+});
+
+app.get('/help', function(req, res) {
+    res.render('help', {
+        title : 'Help'
+    });
+});
+
 function resource(server, name, actions) {
     server.resource(name, actions);
     for(key in actions.extras){

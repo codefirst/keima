@@ -13,8 +13,16 @@ html
       .site
         .title
           a(href="/"): img(src="/images/logo.png")
-        .navigate
-          a.button Login
+        .navigation
+          ul
+            - function navi(t1,t2, url) {
+            -   if(t1 == t2){ return '<span>' + t1 + '</span>'; }
+            -   else        { return '<a href="' + url + '">' + t1 + '</a>' }}
+            li!= navi('Dashboard',title, '/')
+            li!= navi('Help', title, '/help')
+            li!= navi('About', title, '/about')
+        .login
+          p Login
       .page
         h1=title
         !=body
