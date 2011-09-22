@@ -7,20 +7,20 @@ script(src="/demo.js")
 
 h2 Connection
 .demo
-  pre: code.javascript
-    var appkey = "#{app.id}";
-    var keima = new Keima(appkey);
-
+  pre
+    code.javascript
+      var appkey = "#{app.id}";
+      var keima = new Keima(appkey);
 h2 Subscribe channel
 .demo
-  pre: code.javascript
-    var channel = keima.subscribe("channel");
-
+  pre
+    code.javascript
+      varchannel = keima.subscribe("channel");
   form#subscribe
     table
       tr
         th Channel
-        td: input.channel(value="demo")
+        td: input.channel.text(value="demo")
       tr
         th
         td: input.button(type="submit", value="subscribe")
@@ -31,15 +31,14 @@ h2 Event binding
     channel.bind("event", function(data) {
       console.log(data);
     })
-
   form#observe
     table
       tr
         th Event name
-        td: input.name(value="event")
+        td: input.name.text(value="event")
       tr
         th
-        td: input.button(type="submit", value="observe")
+        td: input.button(type="submit", value="event bind")
 
 h2 Publish
 .demo
@@ -47,18 +46,17 @@ h2 Publish
     keima.publish("channel", "event", {
       foo : "bar"
     });
-
   form#publish
     table
       tr
         th  Channel
-        td: input.channel(value="demo")
+        td: input.channel.text(value="demo")
       tr
         th  Event name
-        td: input.name(value="event")
+        td: input.name.text(value="event")
       tr
         th  Sending data
-        td: input.data(value="data")
+        td: input.data.text(value="data")
       tr
         th
         td: input.button(type="submit", value="publish")

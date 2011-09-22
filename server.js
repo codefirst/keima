@@ -30,7 +30,15 @@ app.get('/', function(req, res){
     res.redirect('/app');
 });
 
-app.resource('app', require('./app'));
+function resource(server, name, actions) {
+    server.resource(name, actions);
+    for(key in actions.extras){
+        server.get('/' + name + '/:app/' + key, actions.extras[key]);
+    }
+}
+resource(app, 'app', require('./app'));
+
+
 
 app.listen(app.settings.env == 'development' ? 3000 : 80);
 

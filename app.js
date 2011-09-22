@@ -56,3 +56,13 @@ exports.destroy = function(req, res){
                          res.redirect("/app/")
                      });
 };
+
+exports.extras = {
+    getting_start : function(req, res) {
+        model.App.get(req.params.app, function(app) {
+            res.render("app/getting_start",
+                       { title : "Getting start",
+                         app   : app })
+        });
+    }
+}

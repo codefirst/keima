@@ -9,15 +9,6 @@ function channel(app, name) {
 }
 
 exports.run = function(app, io) {
-    app.get('/app/:app/demo', function(req, res){
-        model.App.get(req.params.app,
-                  function(app) {
-                      res.render("demo",
-                                 { title : "Getting start",
-                                   app   : app })
-                  });
-    });
-
     app.post('/app/:app/publish', function(req, res){
         console.log(req.body);
         console.log("publish to : " + channel(req.params.app, req.body.channel));
