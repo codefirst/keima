@@ -21,6 +21,8 @@ exports.run = function(app, io) {
     });
 
     io.sockets.on('connection', function (socket) {
+        socket.emit('connected', {});
+
         const app = socket.handshake.query.app;
 
         socket.on("subscribe", function(name){
@@ -33,6 +35,10 @@ exports.run = function(app, io) {
             const obj = JSON.parse(data);
             console.log("send message:" + data  + " at " + channel);
             socket.emit(obj.name, channel, obj.data);
+        });
+
+        socket.on('disconnect', function() {
+            socket.emit('disconnected', {})
         });
     });
 }

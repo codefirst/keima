@@ -1,7 +1,5 @@
 function Keima(app) {
-    this.app      = app;
-    this.socket   = io.connect('/?app=' + app);
-    this.channels = {};
+    this.initialize(this, app);
     return this;
 }
 
@@ -9,15 +7,35 @@ function Keima(app) {
     function Channel(socket, name){
         this.socket = socket;
         this.name   = name;
+        return this;
     }
+
     Channel.prototype.bind = function(event, callback){
         var self = this;
         console.log(event);
 
         this.socket.on(event, function(channel, data){
-            if(self.name == channel) { callback(data); }
+            if(self.name == channel) {
+                eval('var obj = ' + data);
+                callback(obj);
+            }
         });
     };
+
+    function Connection(socket) {
+        this.socket = socket;
+        return this;
+    }
+    Connection.prototype.bind = function(name, callback){
+        this.socket.on(name, callback);
+    };
+
+    klass.prototype.initialize = function(self, app){
+        self.app      = app;
+        self.socket   = io.connect('http://localhost:3001/?app=' + app);
+        self.channels = {};
+        self.connection = new Connection(self.socket);
+    }
 
     klass.prototype.subscribe = function(channel){
         this.socket.emit("subscribe", channel);

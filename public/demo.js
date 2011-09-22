@@ -8,6 +8,14 @@ $(function(){
 
     var keima = new Keima(app.id);
 
+    keima.connection.bind('connected', function(){
+        log('connect');
+    })
+
+    keima.connection.bind('disconnected', function(){
+        log('disconnect');
+    })
+
     function subscribe(channel) {
         log("subscribe:" + channel);
         return keima.subscribe(channel);
