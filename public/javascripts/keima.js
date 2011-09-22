@@ -3,7 +3,14 @@ function Keima(app) {
     return this;
 }
 
-(function(klass){
+(function(klass, document){
+    var currentScript = (function (e) {
+        if(e.nodeName.toLowerCase() == 'script') return e;
+        else return arguments.callee(e.lastChild)
+    })(document);
+
+    var host = currentScript.src.replace(/^(https?:\/\/.[^\/]*)\/.*/,'$1');
+
     function Channel(socket, name){
         this.socket = socket;
         this.name   = name;
@@ -32,7 +39,7 @@ function Keima(app) {
 
     klass.prototype.initialize = function(self, app){
         self.app      = app;
-        self.socket   = io.connect('http://localhost:3001/?app=' + app);
+        self.socket   = io.connect(host + '/?app=' + app);
         self.channels = {};
         self.connection = new Connection(self.socket);
     }
@@ -70,4 +77,4 @@ function Keima(app) {
             data    : data
         });
     }
-})(Keima);
+})(Keima, document);
