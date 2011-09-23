@@ -18,11 +18,15 @@ html
             - function navi(t1,t2, url) {
             -   if(t1 == t2){ return '<span>' + t1 + '</span>'; }
             -   else        { return '<a href="' + url + '">' + t1 + '</a>' }}
-            li!= navi('Dashboard',title, '/')
+            li!= navi('Dashboard',title, '/app')
             li!= navi('Help', title, '/help')
             li!= navi('About', title, '/about')
         .login
-          p Login
+          - if(current_user)
+            p #{current_user + ' '}
+              a(href="/logout") Logout
+          - else
+            p: a(href="/login") Login
       .page
         h1=title
         !=body

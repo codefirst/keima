@@ -1,7 +1,8 @@
 const model = require('./model');
 
 exports.index = function(req, res){
-    model.App.all(function(xs){
+    model.App.all(req.getAuthDetails().user.user_id,
+                  function(xs){
         res.render('app/index',
                    { title : 'Dashboard',
                      apps  : xs });
@@ -14,6 +15,7 @@ exports.new = function(req, res){
 
 exports.create = function(req, res){
     model.App.create(req.body.title,
+                     req.getAuthDetails().user.user_id,
                      function(error){
                          if(error){
                              res.send('app create error:' + error);

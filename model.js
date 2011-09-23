@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 
 mongoose.connect(config.mongodb);
 const AppSchema = new Schema({
-    title: String,
-    date: Date
+    title : String,
+    userid: String,
+    date  : Date
 });
 mongoose.model('App', AppSchema);
 
@@ -30,22 +31,23 @@ function success(k) {
 
 const App = mongoose.model('App');
 exports.App = {
-    create : function(title, k) {
+    create : function(title, userid , k) {
         App.count({ title : title },
                   eq(0,
                      function(b) {
                          if(b){
                              const app = new App();
-                             app.title = title;
-                             app.date  = new Date();
+                             app.title  = title;
+                             app.userid = userid;
+                             app.date   = new Date();
                              app.save(k);
                          } else {
                              k("dup error")
                          }
                      }));
     },
-    all : function(k) {
-        App.find({}).asc('title').exec(success(k));
+    all : function(userid, k) {
+        App.find({ userid : userid }).asc('title').exec(success(k));
     },
     get : function(id, k) {
         App.findById(id, success(k));
