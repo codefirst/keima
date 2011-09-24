@@ -7,30 +7,39 @@ const express  = require('express');
 const auth     = require('connect-auth');
 const app = module.exports = express.createServer();
 
+app.configure('development', function(){
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+    app.use(auth([
+        auth.Twitter({consumerKey:    '98QWlHwFPYhE3NAbyufs9A',
+                      consumerSecret: 'CovBLwmZOE5wkZ53lgoE9QjrJxTIsn9WeiDJNDx0TS8',
+                      callback : 'http://0.0.0.0:3001/auth/twitter_callback' })]))
+});
+
+app.configure('production', function(){
+    app.use(express.errorHandler());
+    app.use(auth([
+        auth.Twitter({consumerKey:    '98QWlHwFPYhE3NAbyufs9A',
+                      consumerSecret: 'CovBLwmZOE5wkZ53lgoE9QjrJxTIsn9WeiDJNDx0TS8'})]))
+});
+
 app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({ secret : 'keima' }));
-    app.use(auth([
-        auth.Twitter({consumerKey:    '98QWlHwFPYhE3NAbyufs9A',
-                      consumerSecret: 'CovBLwmZOE5wkZ53lgoE9QjrJxTIsn9WeiDJNDx0TS8',
-                      callback : 'http://0.0.0.0:3001/auth/twitter_callback' })]))
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(require('stylus').middleware({ src: __dirname + '/public' }));
     app.use(express.static(__dirname + '/public'));
 });
 
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+if(app.settings.env == 'development') {
+    app.listen(3001);
+}else{
+    app.listen(80, 'keima.no.de');
+}
 
-app.configure('production', function(){
-    app.use(express.errorHandler());
-});
-app.listen(app.settings.env == 'development' ? 3001 : 80);
 const io = require('socket.io').listen(app);
 
 // helper
