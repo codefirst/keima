@@ -50,7 +50,7 @@ app.get('/', function(req, res){
     if( req.isAuthenticated()) {
         res.redirect('/app');
     } else {
-        res.render('index', { title : 'Top page'})
+        res.render('index', { title : 'Top page', layout:false})
     }
 });
 

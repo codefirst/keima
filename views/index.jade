@@ -1,4 +1,51 @@
-h1 Keima
+!!! 5
+html
+  head
+    meta(content='text/thml; charset=utf-8', http-equiv='content')
 
+    title Keima: A simple, open, realtime notification service
+    link(href="/favicon.ico", rel="shortcut icon", type="image/vnd.microsoft.icon")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/javascripts/jquery.min.js")
+    script(src="/socket.io/socket.io.js")
+  body
+    .main
+      .site
+        .title
+          a(href="/"): img(src="/images/logo.png", alt="Keima")
+        .login
+          p: a(href="/login"): img(src="/images/login-with-twitter.png", alt="login")
+      .page.top
+        .top-image
+          img(src="/images/top.png")
+        .description
+          h1 Keima: Realtime notification platform
+          p Keima is a simple, open, realtime notification service. Written using node.js, Socket.IO, MongoDB, redis.
 
+          h2 Send events to your apps via many way!
+          p Keima supports following methods.
+          ul
+            li Browser native WebSocket(only Chrome, Firefox, Safari, Opera)
+            li FlashSocket
+            li XHR-Polling
+
+          h2 Easy to use
+          p To receive notification, you only add following code.
+          pre: code.javascript
+            var keima = new Keima("your-api-key");
+            var channel = keima.subscribe("channel");
+            channel.bind("event", function(data) {
+              console.log(data);
+            });
+          h2 Easy to sign up
+          p To use Keima, you need only a twitter account.
+          p: a(href="/login"): img(src="/images/login-with-twitter.png", alt="login")
+
+          h2 Open source
+          p Keima is a open source. You could fork this via Gtihub.
+    .info
+      p.credits
+        | Copyright (C) 2011
+        a(href="http://codefirst.github.com/") codefirst.org
+        | . All rights reserved.
 

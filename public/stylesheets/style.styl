@@ -10,8 +10,8 @@ radius(n)
   border-radius n
 
 shadow(n)
-  -moz-box-shadow: 0 n n #ccc;
-  -webkit-box-shadow: 0 n n #ccc;
+  -moz-box-shadow: 0 n n #eee;
+  -webkit-box-shadow: n n n #eee;
 
 html,body,div,ul,li,p,form, h1, h2, pre,a
   border  0
@@ -67,11 +67,19 @@ a
     right 0
     width 200px
 
-
-
-
-
 .page
+  .top-image
+    vertical-align top
+    display inline-block
+    width 350px
+    img
+      radius(5px)
+      shadow(5px)
+  .description
+    vertical-align top
+    width auto
+    display inline-block
+
   margin 20px 50px 0px 50px
   height 90%
   over-flow auto
@@ -81,7 +89,9 @@ a
     margin-top 5px
 
   ul
+    margin-top 10px
     margin-left 30px
+
   ul.apps
     margin 0
 
@@ -89,8 +99,9 @@ a
     margin-bottom 10px
 
   h2
-    margin-top 20px
-    margin-bottom 5px
+    margin-top 30px
+    margin-bottom 10px
+    border-bottom 1px dashed black
 
   .app
     border 1px solid #EEE
@@ -137,8 +148,11 @@ a
       display inline-block
       width 340px
   pre
+    margin-top 10px
     width 800px
     border 1px solid black
+    radius(3px)
+    shadow(5px)
     padding 5px
 
 body > .info
