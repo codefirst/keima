@@ -6,5 +6,6 @@ module.exports = function(server){
             } else {
                 return null;
             }
-        }});
-}
+        },
+        messages: require('express-messages')
+    }); };

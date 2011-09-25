@@ -92,10 +92,8 @@ app.get('/app*',function(req, res, next){
     if(req.isAuthenticated()) {
         next();
     } else {
-        res.render('error/not_login',{
-            title: 'Error: Not login',
-            status: 403
-        });
+        req.flash('error', 'You need to login');
+        res.redirect('/');
     }
 });
 
