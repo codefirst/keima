@@ -63,10 +63,9 @@ block body
           td: input.name.text(value="event")
         tr
           th  Sending data
-          td: input.data.text(value="data")
+          td: input.data.text(value='{name:"mzp",message:"Hello!"}')
         tr
           th
           td: input.button(type="submit", value="publish")
-
   h2 Console
     p: textarea#console(cols=80,rows=15)

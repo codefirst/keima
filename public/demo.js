@@ -24,7 +24,7 @@ $(function(){
     function observe(channel, name) {
         log("observe:" + name + " at " + channel);
         keima.channels[channel].bind(name, function(data){
-            log("receive name: name=" + name + ", channel=" + channel + ", data=" + data);
+            log("receive name: name=" + name + ", channel=" + channel + ", data=" + JSON.stringify(data));
         });
     }
 
