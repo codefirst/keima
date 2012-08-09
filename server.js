@@ -48,7 +48,7 @@ const io = require('socket.io').listen(server);
 if(app.settings.env == 'development') {
     var listen = server.listen(3001);
 }else{
-    var listen = server.listen(80, 'keima.no.de');
+    var listen = server.listen(80);
 }
 
 // Routes
