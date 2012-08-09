@@ -3,15 +3,13 @@
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-      "express": "2.4.6"
-    , "express-resource": "0.2.2"
-    , "express-messages": "latest"
-    , "jade": ">= 0.0.1"
-    , "socket.io": "0.8.4"
-    , "mongoose": "2.1.3"
-    , "redis" : "0.6.7"
-    , "stylus" : "latest"
-    , "connect" : "latest"
-    , "connect-auth" : "latest"
+      "express": "3.0.0rc2"
+    , "jade": "0.27.2"
+    , "socket.io": "0.9.9"
+    , "mongoose": "3.0.0"
+    , "redis" : "0.7.2"
+    , "stylus" : "0.28.2"
+    , "connect" : "2.4.3"
+    , "connect-auth" : "0.5.3"
   }
 }

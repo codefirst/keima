@@ -47,7 +47,7 @@ exports.App = {
                      }));
     },
     all : function(userid, k) {
-        App.find({ userid : userid }).asc('title').exec(success(k));
+        App.find({ userid : userid }).sort({'title' : 'asc'}).exec(success(k));
     },
     get : function(id, k) {
         App.findById(id, success(k));

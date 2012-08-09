@@ -1,8 +1,10 @@
-form(action="/app/", method="POST")
-  table
-    tr
-      th Title
-      td.value: input(name="title", placeholder="application title")
-    tr
-      th
-      td.value: input.button(type="submit", value="Create")
+extends ../layout
+block body
+  form(action="/app/", method="POST")
+    table
+      tr
+        th Title
+        td.value: input(name="title", placeholder="application title")
+      tr
+        th
+        td.value: input.button(type="submit", value="Create")

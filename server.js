@@ -5,7 +5,7 @@
 
 const express  = require('express');
 const auth     = require('connect-auth');
-const app = module.exports = express.createServer();
+const app = module.exports = express();
 
 app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -16,9 +16,6 @@ app.configure('production', function(){
 });
 
 app.configure(function() {
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
-    app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({ secret : 'keima' }));
 
@@ -32,22 +29,27 @@ app.configure(function() {
             auth.Twitter({consumerKey:    '98QWlHwFPYhE3NAbyufs9A',
                           consumerSecret: 'CovBLwmZOE5wkZ53lgoE9QjrJxTIsn9WeiDJNDx0TS8'})]))
     }
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
+    app.use(express.bodyParser());
+
+    // helper
+    app.use(require('./helper').helper);
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(require('stylus').middleware({ src: __dirname + '/public' }));
     app.use(express.static(__dirname + '/public'));
+
 });
 
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
+
 if(app.settings.env == 'development') {
-    app.listen(3001);
+    var listen = server.listen(3001);
 }else{
-    app.listen(80, 'keima.no.de');
+    var listen = server.listen(80, 'keima.no.de');
 }
-
-const io = require('socket.io').listen(app);
-
-// helper
-require('./helper')(app);
 
 // Routes
 app.get('/', function(req, res){
@@ -90,17 +92,24 @@ app.get('/logout', function(req, res, params){
 
 app.get('/app*',function(req, res, next){
     if(req.isAuthenticated()) {
+        req.session.messages = null;
         next();
     } else {
-        req.flash('error', 'You need to login');
+        req.session.messages = [ 'You need to login' ];
         res.redirect('/');
     }
 });
 
-const Resource = require('express-resource');
+
 function resource(server, name, actions) {
-    server.resource(name, actions);
-    actions.extras(server, name);
+    server.get("/"+name, actions.index);
+    server.get("/"+name + "/new", actions.new);
+    server.post("/"+name , actions.create);
+    server.get("/"+name+"/:app" , actions.show);
+    server.get("/"+name +"/:app/edit", actions.edit);
+    server.put("/"+name+"/:app", actions.update);
+    server.del("/"+name+"/:app", actions.destroy);
+    actions.extras(server, listen, name);
 }
 resource(app, 'app', require('./app'));
 
@@ -108,6 +117,6 @@ const connection = require('./connection');
 connection.run(app, io);
 
 console.log("Express server listening on port %s:%d in %s mode",
-            app.address().address,
-            app.address().port,
+            listen.address().address,
+            listen.address().port,
             app.settings.env);

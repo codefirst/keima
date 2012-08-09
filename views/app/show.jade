@@ -1,17 +1,19 @@
-table
-  tr
-    th ID
-    td= app.id
-  tr
-    th Title
-    td=app.title
-  tr
-    th Updated date
-    td= app.date
-  tr
-    th
-    td
-     a.button(href="/app/#{app.id}/edit") edit
-     form.delete-button(method="post", action="/app/#{app.id}")
-      input.button(type="submit", value="delete")
-      input(type="hidden", name="_method", value="delete")
+extends ../layout
+block body
+  table
+    tr
+      th ID
+      td= app.id
+    tr
+      th Title
+      td=app.title
+    tr
+      th Updated date
+      td= app.date
+    tr
+      th
+      td
+       a.button(href="/app/#{app.id}/edit") edit
+       form.delete-button(method="post", action="/app/#{app.id}")
+        input.button(type="submit", value="delete")
+        input(type="hidden", name="_method", value="delete")

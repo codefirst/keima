@@ -42,7 +42,7 @@ $(function(){
     });
 
     $('#observe').bind('submit', function(e){
-        observe( $('.name' ,e.target).val() );
+        observe($('.channel' ,e.target).val(), $('.name' ,e.target).val() );
         return false;
     });
 

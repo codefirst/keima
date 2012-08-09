@@ -59,9 +59,9 @@ exports.destroy = function(req, res){
                      });
 };
 
-exports.extras = function(server,name) {
+exports.extras = function(server,listen,name) {
     server.get('/' + name + '/:app/getting_start',function(req, res) {
-        const address = server.address();
+        const address = listen.address();
         console.log(address);
         model.App.get(req.params.app, function(app) {
             res.render("app/getting_start",

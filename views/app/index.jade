@@ -1,13 +1,12 @@
-ul.apps
-  - for(var key in apps)
-    .app
-      .info
-        span.title= apps[key].title
-        span.date=  apps[key].date
-      p: a(href="/app/#{apps[key].id}") more info..
-      p: a(href="/app/#{apps[key].id}/getting_start") Getting start
+extends ../layout
+block body
+  ul.apps
+    - for(var key in apps)
+      .app
+        .info
+          span.title= apps[key].title
+          span.date=  apps[key].date
+        p: a(href="/app/#{apps[key].id}") more info..
+        p: a(href="/app/#{apps[key].id}/getting_start") Getting start
 
- p:  a.button(href="/app/new") new app
-
-
-
+   p:  a.button(href="/app/new") new app

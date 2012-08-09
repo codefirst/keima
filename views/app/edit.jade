@@ -1,14 +1,15 @@
-table
-  tr
-    th ID
-    td= app.id
-  tr
-    th Title
-    td: input.text(name="title", value="#{app.title}")
-  tr
-    th Updated date
-    td= app.date
-  tr
-    th
-    td: input.button(type="submit", value="save")
-
+extends ../layout
+block body
+  table
+    tr
+      th ID
+      td= app.id
+    tr
+      th Title
+      td: input.text(name="title", value="#{app.title}")
+    tr
+      th Updated date
+      td= app.date
+    tr
+      th
+      td: input.button(type="submit", value="save")
