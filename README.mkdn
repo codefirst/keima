@@ -1,20 +1,20 @@
 REQUIRE
 ------------------------------
 
- * node.js
- * npm
+ * node.js 0.8.4
+ * npm 1.1.48 
 
 INSTALL DEPENDENCIES LIBRARYRUN
 ------------------------------
 
-   $ npm install -g
+    $ npm install
 
 RUN
 ------------------------------
 
-   $ node server.js
+    $ node server.js
 
 Or, you need auto-reload:
 
-   $ npm install supervisor -g
-   $ supervisor -p server.js
+    $ npm install supervisor -g
+    $ supervisor server.js
