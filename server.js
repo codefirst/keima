@@ -44,6 +44,7 @@ app.configure(function() {
 
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
+io.enable('browser client minification');
 
 if(app.settings.env == 'development') {
     var listen = server.listen(3001);
