@@ -19,7 +19,6 @@ function Keima(app) {
 
     Channel.prototype.bind = function(event, callback){
         var self = this;
-        console.log(event);
 
         this.socket.on(event, function(channel, data){
             if(self.name == channel) {
