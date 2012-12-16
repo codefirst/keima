@@ -22,15 +22,19 @@ exports.run = function(app, io) {
         socket.emit('connected', {});
 
         const app = socket.handshake.query.app;
+        const subscribed = [];
 
         socket.on("subscribe", function(name){
             const ch = channel(app, name);
+            subscribed.push(ch);
             subscriber.subscribe(ch);
         });
 
         subscriber.on("message", function(channel, data){
-            const obj = JSON.parse(data);
-            socket.emit(obj.name, channel, obj.data);
+            if(subscribed.indexOf(channel) != -1) {
+                const obj = JSON.parse(data);
+                socket.emit(obj.name, channel, obj.data);
+            }
         });
 
         socket.on('disconnect', function() {
