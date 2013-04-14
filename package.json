@@ -10,6 +10,6 @@
     , "redis" : "0.7.2"
     , "stylus" : "0.28.2"
     , "connect" : "2.4.3"
-    , "connect-auth" : "0.5.3"
+    , "connect-auth" : "0.6.0"
   }
 }
