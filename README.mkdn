@@ -1,10 +1,16 @@
-REQUIRE
+Keima
+==============================
+A simple, open, realtime notification service.
+
+REQUIREMENT
 ------------------------------
 
  * node.js 0.8.4
- * npm 1.1.48 
+ * npm 1.1.48
+ * MongoDB
+ * Redis
 
-INSTALL DEPENDENCIES LIBRARYRUN
+INSTALL DEPENDENCIES
 ------------------------------
 
     $ npm install
@@ -18,3 +24,19 @@ Or, you need auto-reload:
 
     $ npm install supervisor -g
     $ supervisor server.js
+
+RUN ON HEROKU
+------------------------------
+Keima works on [Heroku](https://heroku.com/)
+
+    $ git clone git@github.com:codefirst/keima.git
+    $ cd keima
+    $ heroku create YOUR_APP_NAME
+    $ heroku labs:enable websockets
+    $ git push heroku master
+    $ heroku addons:add mongohq:sandbox
+    $ heroku addons:add redistogo:nano
+    $ heroku config:set NODE_ENV=production
+    $ heroku config:set TWITTER_CALLBACK=http://YOUR_APP_NAME.herokuapp.com/auth/twitter_callback
+    $ heroku ps:scale web=1
+
