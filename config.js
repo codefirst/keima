@@ -5,8 +5,9 @@ exports.redis = {
         host : 'localhost',
         port : 6379
 };
-if (process.env.REDISTOGO_URL) {
-  var rtg = require("url").parse(process.env.REDISTOGO_URL);
+var redisURL = process.env.REDIS_URL || process.env.REDISTOGO_URL;
+if (redisURL) {
+  var rtg = require("url").parse(redisURL);
   exports.redis = {
         host : rtg.hostname,
         port : rtg.port,
