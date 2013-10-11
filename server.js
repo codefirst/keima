@@ -49,7 +49,7 @@ io.enable('browser client minification');
 if(app.settings.env == 'development') {
     var listen = server.listen(3001);
 }else{
-    var listen = server.listen(80);
+    var listen = server.listen(process.env.PORT || 80);
 }
 
 // Routes
