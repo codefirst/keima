@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+const config     = require('./config');
 const express  = require('express');
 const auth     = require('connect-auth');
 const app = module.exports = express();
@@ -19,15 +20,15 @@ app.configure(function() {
     app.use(express.cookieParser());
     app.use(express.session({ secret : 'keima' }));
 
-    if(app.settings.env == 'development') {
+    if(app.settings.env == 'development' || config.twitter.callback) {
         app.use(auth([
-            auth.Twitter({consumerKey:    '98QWlHwFPYhE3NAbyufs9A',
-                          consumerSecret: 'CovBLwmZOE5wkZ53lgoE9QjrJxTIsn9WeiDJNDx0TS8',
-                          callback : 'http://0.0.0.0:3001/auth/twitter_callback' })]));
+            auth.Twitter({consumerKey:    config.twitter.consumerKey,
+                          consumerSecret: config.twitter.consumerSecret,
+                          callback : config.twitter.callback || 'http://0.0.0.0:3001/auth/twitter_callback' })]));
     }else{
         app.use(auth([
-            auth.Twitter({consumerKey:    '98QWlHwFPYhE3NAbyufs9A',
-                          consumerSecret: 'CovBLwmZOE5wkZ53lgoE9QjrJxTIsn9WeiDJNDx0TS8'})]))
+            auth.Twitter({consumerKey:    config.twitter.consumerKey,
+                          consumerSecret: config.twitter.consumerSecret})]))
     }
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
