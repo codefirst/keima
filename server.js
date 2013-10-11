@@ -117,7 +117,9 @@ resource(app, 'app', require('./app'));
 const connection = require('./connection');
 connection.run(app, io);
 
+/*
 console.log("Express server listening on port %s:%d in %s mode",
             listen.address().address,
             listen.address().port,
             app.settings.env);
+*/
