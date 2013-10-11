@@ -2,6 +2,10 @@ const config     = require('./config');
 const redis      = require('redis');
 const subscriber = redis.createClient(config.redis.port, config.redis.host);
 const publisher  = redis.createClient(config.redis.port, config.redis.host);
+if (config.redis.password) {
+  subscriber.auth(config.redis.password);
+  publisher.auth(config.redis.password);
+}
 const model = require('./model');
 
 function channel(app, name) {
