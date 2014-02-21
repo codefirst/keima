@@ -2,6 +2,8 @@ Keima
 ==============================
 A simple, open, realtime notification service.
 
+[![wercker status](https://app.wercker.com/status/ebf7bc858e3f9fff361322e5e83692ff/s/ "wercker status")](https://app.wercker.com/project/bykey/ebf7bc858e3f9fff361322e5e83692ff)
+
 REQUIREMENT
 ------------------------------
 
