@@ -43,11 +43,14 @@ function Keima(app) {
         self.connection = new Connection(self.socket);
     }
 
-    klass.prototype.subscribe = function(channel){
-        this.socket.emit("subscribe", channel);
-        var obj= new Channel( this.socket, this.app + "/" + channel);
-        this.channels[channel] = obj;
-        return obj;
+    klass.prototype.subscribe = function(channelName){
+        this.socket.emit("subscribe", channelName);
+        var channel = this.channels[channelName];
+        if (channel == null) {
+            channel = new Channel( this.socket, this.app + "/" + channelName);
+            this.channels[channelName] = channel;
+        }
+        return channel;
     };
 
     function encodeHTMLForm( data ) {
