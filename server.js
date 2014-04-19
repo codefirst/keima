@@ -3,6 +3,13 @@
  * Module dependencies.
  */
 
+if(process.env.NODETIME_ACCOUNT_KEY) {
+    require('nodetime').profile({
+        accountKey: process.env.NODETIME_ACCOUNT_KEY,
+        appName: 'Keima'
+    });
+}
+
 const config     = require('./config');
 const express  = require('express');
 const auth     = require('connect-auth');

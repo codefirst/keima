@@ -11,5 +11,6 @@
     , "stylus" : "0.28.2"
     , "connect" : "2.4.3"
     , "connect-auth" : "0.6.0"
+    , "nodetime" : "0.8.15"
   }
 }
