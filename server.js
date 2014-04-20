@@ -52,7 +52,12 @@ app.configure(function() {
 
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
-io.enable('browser client minification');
+io.configure('production', function(){
+    io.enable('browser client etag');
+    io.enable('browser client minification');
+    io.enable('browser client gzip');
+    io.set('log level', 1);
+});
 
 if(app.settings.env == 'development') {
     var listen = server.listen(3001);
