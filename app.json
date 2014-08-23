@@ -1,0 +1,21 @@
+{
+  "name": "Keima",
+  "description": "A simple, open, realtime notification service",
+  "repository": "https://github.com/codefirst/keima/",
+  "logo": "https://raw.githubusercontent.com/codefirst/keima/master/public/images/logo.png",
+  "env": {
+    "NODE_ENV": {
+      "description": "Node.js environment",
+      "value": "production"
+    },
+    "TWITTER_CALLBACK": {
+      "description": "Twitter OAuth callback URL",
+      "value": "http://YOUR_APP_NAME.herokuapp.com/auth/twitter_callback"
+    }
+  },
+  "addons": [
+    "mongohq",
+    "redistogo"
+  ]
+}
+

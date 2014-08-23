@@ -1,8 +1,13 @@
 Keima
 ==============================
-A simple, open, realtime notification service.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 [![wercker status](https://app.wercker.com/status/ebf7bc858e3f9fff361322e5e83692ff/s/ "wercker status")](https://app.wercker.com/project/bykey/ebf7bc858e3f9fff361322e5e83692ff)
+
+OVERVIEW
+------------------------------
+A simple, open, realtime notification service.
 
 REQUIREMENT
 ------------------------------
@@ -34,7 +39,6 @@ Keima works on [Heroku](https://heroku.com/)
     $ git clone git@github.com:codefirst/keima.git
     $ cd keima
     $ heroku create YOUR_APP_NAME
-    $ heroku labs:enable websockets
     $ git push heroku master
     $ heroku addons:add mongohq:sandbox
     $ heroku addons:add redistogo:nano
