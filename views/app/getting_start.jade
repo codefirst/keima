@@ -16,8 +16,8 @@ block body
   h2 Connection
   pre
     code.javascript
-      var appkey = "#{app.id}";
-      var keima = new Keima(appkey);
+      | var appkey = "#{app.id}";
+      | var keima = new Keima(appkey);
   h2 Subscribe channel
   .demo
     pre.
@@ -39,7 +39,7 @@ block body
     form#observe
       table
         tr
-          th CHannel name
+          th Channel name
           td: input.channel.text(value="demo")
         tr
           th Event name
