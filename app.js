@@ -61,7 +61,7 @@ exports.destroy = function(req, res){
 
 exports.extras = function(server,listen,name) {
     server.get('/' + name + '/:app/getting_start',function(req, res) {
-        const protocol = req.protocol;
+        const protocol = req.headers['x-forwarded-proto'] || req.protocol;
         const hostname = req.headers.host;
         model.App.get(req.params.app, function(app) {
             res.render("app/getting_start",
