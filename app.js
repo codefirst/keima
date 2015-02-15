@@ -61,11 +61,12 @@ exports.destroy = function(req, res){
 
 exports.extras = function(server,listen,name) {
     server.get('/' + name + '/:app/getting_start',function(req, res) {
-        const address = listen.address();
+        const protocol = req.protocol;
+        const hostname = req.headers.host;
         model.App.get(req.params.app, function(app) {
             res.render("app/getting_start",
                        { title : "Getting start",
-                         address  : address.address + ":" + address.port,
+                         address  : protocol + "://" + hostname,
                          app   : app })
         });
     })
