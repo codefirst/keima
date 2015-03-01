@@ -1,5 +1,5 @@
 // mongodb
-exports.mongodb = process.env.MONGO_URL || process.env.MONGOHQ_URL || 'mongodb://localhost/keimadb';
+exports.mongodb = process.env.MONGO_URL || process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/keimadb';
 // redis
 exports.redis = {
         host : 'localhost',
