@@ -31,7 +31,7 @@ app.configure(function() {
         app.use(auth([
             auth.Twitter({consumerKey:    config.twitter.consumerKey,
                           consumerSecret: config.twitter.consumerSecret,
-                          callback : config.twitter.callback || 'http://0.0.0.0:3001/auth/twitter_callback' })]));
+                          callback : config.twitter.callback || 'http://localhost:3001/auth/twitter_callback' })]));
     }else{
         app.use(auth([
             auth.Twitter({consumerKey:    config.twitter.consumerKey,
