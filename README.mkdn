@@ -43,6 +43,6 @@ Keima works on [Heroku](https://heroku.com/)
     $ heroku addons:add mongohq:sandbox
     $ heroku addons:add redistogo:nano
     $ heroku config:set NODE_ENV=production
-    $ heroku config:set TWITTER_CALLBACK=http://YOUR_APP_NAME.herokuapp.com/auth/twitter_callback
+    $ heroku config:set TWITTER_CALLBACK=https://YOUR_APP_NAME.herokuapp.com/auth/twitter_callback
     $ heroku ps:scale web=1
 
